@@ -9,6 +9,12 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
 
+import postRoutes from "./routes/post.js";
+import { createPost } from "./controllers/posts.js";
+
+app.use("/posts", postRoutes);
+app.use("/posts", createPost);
+
 //connecting mongodb cloud
 const MONGO_URL =
   "mongodb+srv://sathya06:sathya06@cluster0.cunjy.mongodb.net/memories-app?retryWrites=true&w=majority";
@@ -21,5 +27,5 @@ mongoose
     useFindAndModify: false,
     useUnifiedTopology: true,
   })
-  .then(() => app.listen(PORT, () => console.log(`Server running on ${PORT}`)))
+  .then(() => app.listen(PORT, () => console.log(`Server running on ${PORT}`))) //its is an promice .then acepts callback
   .catch((err) => console.log(err.message));
