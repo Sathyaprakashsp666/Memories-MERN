@@ -1,23 +1,31 @@
+import {
+  FETCH_ALL,
+  CREATE,
+  UPDATE,
+  LIKE_POST,
+  DELETE,
+} from "../actionTypes/actionTypes";
+
 export default (posts = [], action) => {
   switch (action.type) {
-    case "UPDATE":
+    case UPDATE:
       return posts.map((post) =>
         post._id === action.payload._id ? action.payload : post
       );
 
-    case "FETCH_ALL":
+    case FETCH_ALL:
       return action.payload;
 
-    case "CREATE":
+    case CREATE:
       return [...posts, action.payload];
 
-    case "DELETE":
+    case DELETE:
       return posts.filter((post) => post._id !== action.payload);
 
-      case "LIKE_POST":
-        return posts.map((post) =>
-          post._id === action.payload._id ? action.payload : post
-        );
+    case LIKE_POST:
+      return posts.map((post) =>
+        post._id === action.payload._id ? action.payload : post
+      );
 
     default:
       return posts;

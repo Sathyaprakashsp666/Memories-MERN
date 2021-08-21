@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AppBar, Container, Typography, Grow, Grid } from "@material-ui/core";
 import Posts from "./Posts/Posts";
 import Form from "./Form/Form";
-import useStyles from "./style";
+import useStyles from  './style.js'
 import { useDispatch } from "react-redux";
 import { getPosts } from "../Redux/actions/posts";
 
@@ -33,13 +33,14 @@ const Home = () => {
           container
           justifyContent="space-between"
           alignItems="stretch"
-          spacing={4}
+          spacing={3}
+          className={classes.mainContainer}
         >
           <Grid item xs={12} sm={7}>
-            <Posts setCurrentId= {setCurrentId} currentId= {currentId}/>
+            <Posts setCurrentId={setCurrentId} currentId={currentId} />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Form setCurrentId= {setCurrentId} currentId= {currentId}/>
+            <Form setCurrentId={setCurrentId} currentId={currentId} />
           </Grid>
         </Grid>
       </Grow>
