@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 import postRoutes from "./routes/post.js";
-import { createPost } from "./controllers/posts.js";
 
 app.use("/posts", postRoutes);
-app.use("/posts", createPost);
 
 //connecting mongodb cloud
+//mongodb+srv://sathya06:sathya06@cluster0.cunjy.mongodb.net/memories-app?retryWrites=true&w=majority
+//mongodb+srv://ixigo:ixigo@cluster0.dx5wc.mongodb.net/ixigo?retryWrites=true&w=majority
 const MONGO_URL =
   "mongodb+srv://sathya06:sathya06@cluster0.cunjy.mongodb.net/memories-app?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
