@@ -10,9 +10,9 @@ export default makeStyles((theme) => ({
     alignItems: "center",
   },
   [theme.breakpoints.down("sm")]: {
-    mainContainer: {
-      flexDirection: "column-reverse",
-    },
+    // mainContainer: {
+    //   flexDirection: "column-reverse",
+    // },
     heading: {
       fontSize : '20px'
     },

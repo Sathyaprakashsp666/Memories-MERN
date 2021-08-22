@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Container, Typography, Grow, Grid } from "@material-ui/core";
+import { Grow, Grid, Paper, Typography } from "@material-ui/core";
 import Posts from "./Posts/Posts";
 import Form from "./Form/Form";
-import useStyles from  './style.js'
+import useStyles from "./style.js";
 import { useDispatch } from "react-redux";
 import { getPosts } from "../Redux/actions/posts";
+import { Link, useHistory, useLocation } from "react-router-dom";
+// import { useSelector } from "react-redux";
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(null);
@@ -12,22 +14,18 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  // const isLogin = useSelector((state) => state.auth.isLogin);
+  //console.log(isLogin);
+  const initUser = JSON.parse(localStorage.getItem("profile"));
+  const [user, setUser] = useState(initUser);
+  const isLogin = user?.token;
+  //console.log(isLogin)
+
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch, currentId]);
+  }, [dispatch, currentId, isLogin]);
   return (
-    <Container maxWidth="lg">
-      <AppBar position="static" color="inherit" className={classes.appBar}>
-        <Typography variant="h2" align="center" className={classes.heading}>
-          MEMORIES
-        </Typography>
-        <img
-          className={classes.image}
-          height="60px"
-          src="https://raw.githubusercontent.com/adrianhajdin/project_mern_memories/PART_1_and_2/client/src/images/memories.png"
-          alt="image"
-        />
-      </AppBar>
+    <>
       <Grow in>
         <Grid
           container
@@ -36,15 +34,23 @@ const Home = () => {
           spacing={3}
           className={classes.mainContainer}
         >
+          {isLogin ? (
+            <Grid item xs={12} sm={4}>
+              <Form setCurrentId={setCurrentId} currentId={currentId} />
+            </Grid>
+          ) : (
+            <Grid item xs={12} sm={4}>
+              <Typography variant="h6">
+                Please login to create your own memories like others's
+              </Typography>
+            </Grid>
+          )}
           <Grid item xs={12} sm={7}>
             <Posts setCurrentId={setCurrentId} currentId={currentId} />
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Form setCurrentId={setCurrentId} currentId={currentId} />
-          </Grid>
         </Grid>
       </Grow>
-    </Container>
+    </>
   );
 };
 

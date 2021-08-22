@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardActions,
@@ -17,7 +17,12 @@ import { deletePost, likePost } from "../../../Redux/actions/posts";
 
 const Post = ({ post, setCurrentId, currentId }) => {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  //checking user token is exist or not
+  const initUser = JSON.parse(localStorage.getItem("profile"));
+  const [user, setUser] = useState(initUser);
+  const isLogin = user?.token;
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -61,14 +66,30 @@ const Post = ({ post, setCurrentId, currentId }) => {
           {post.message}
         </Typography>
       </CardContent>
-      <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary"  onClick={() => {dispatch(likePost(post._id))}}>
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
-        </Button>
-        <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
-          <DeleteIcon fontSize="small" /> Delete
-        </Button>
-      </CardActions>
+
+      {/* //user logged in then only like and delete button wioll be displayed */}
+      {isLogin && (
+        <CardActions className={classes.cardActions}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              dispatch(likePost(post._id));
+            }}
+          >
+            <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
+          </Button>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              dispatch(deletePost(post._id));
+            }}
+          >
+            <DeleteIcon fontSize="small" /> Delete
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 };
