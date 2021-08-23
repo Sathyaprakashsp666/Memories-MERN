@@ -15,7 +15,7 @@ const Navbar = () => {
   console.log(user);
   const history = useHistory();
   const dispatch = useDispatch();
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     const token = user?.token;
@@ -32,7 +32,7 @@ const Navbar = () => {
     <AppBar position="static" color="inherit" className={classes.appBar}>
       <div className={classes.brandContainer}>
         <Typography
-          variant="h2"
+          variant="h3"
           align="center"
           className={classes.heading}
           component={Link}
@@ -42,8 +42,9 @@ const Navbar = () => {
         </Typography>
         <img
           className={classes.image}
-          height="60px"
-          src="https://raw.githubusercontent.com/adrianhajdin/project_mern_memories/PART_1_and_2/client/src/images/memories.png"
+          height="50px"
+          width="100%"
+          src="https://cdn2.iconfinder.com/data/icons/multimedia-4-4/48/174-128.png"
           alt="image"
         />
       </div>
@@ -59,26 +60,27 @@ const Navbar = () => {
               {user?.result.name.charAt(0)} // Only taking first charatcer of
               the name
             </Avatar>
-            <Typography className={classes.userName} variant="h6">
+            {/* <Typography className={classes.userName} variant="h6">
               {user?.result.name}
-            </Typography>
+            </Typography> */}
             <Button
               variant="contained"
               className={classes.logout}
-              color="secondary"
+              color="primary"
               onClick={logout}
             >
-              LOGOUT
+              Logout
             </Button>
           </div>
         ) : (
           <Button
             component={Link}
+            className={classes.logout}
             to="/auth"
             variant="contained"
-            color="secondary"
+            color="primary"
           >
-            SIGN IN
+            Sign In
           </Button>
         )}
       </Toolbar>
