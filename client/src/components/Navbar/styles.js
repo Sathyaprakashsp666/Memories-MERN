@@ -14,6 +14,9 @@ export default makeStyles((theme) => ({
     left: 0,
     right: 0,
     backgroundColor: "#000",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
   },
   heading: {
     textDecoration: "none",
@@ -25,7 +28,7 @@ export default makeStyles((theme) => ({
   image: {
     marginLeft: "15px",
     [theme.breakpoints.down("sm")]: {
-      display: "none",
+      height: "22px",
     },
   },
   toolbar: {

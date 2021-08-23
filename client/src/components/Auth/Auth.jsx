@@ -76,7 +76,7 @@ const Auth = () => {
   };
 
   const googleError = (error) => {
-    alert("Google Sign In was unsuccessful. ");
+    //alert("Google Sign In was unsuccessful. ");
     console.log(error);
   };
 

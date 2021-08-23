@@ -2,19 +2,21 @@ import mongoose from "mongoose";
 import cors from "cors";
 import express from "express";
 import bodyParser from "body-parser";
-import dotenv from 'dotenv'
-
+import dotenv from "dotenv";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(cors());
-dotenv.config()
+dotenv.config();
 
 import postRoutes from "./routes/post.js";
 
 app.use("/posts", postRoutes);
+app.use("/", (req, res) => {
+  res.send("You're successfully deployed backend");
+});
 
 //connecting mongodb cloud
 const PORT = process.env.PORT || 5000;

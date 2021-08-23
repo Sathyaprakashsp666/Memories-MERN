@@ -5,7 +5,6 @@ import Navbar from "../Navbar/Navbar";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Auth/Auth";
 
-
 const Routes = () => {
   return (
     <Container maxWidth="lg">

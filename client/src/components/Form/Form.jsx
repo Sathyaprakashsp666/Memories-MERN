@@ -50,7 +50,7 @@ const Form = ({ setCurrentId, currentId }) => {
     <Paper className={classes.paper}>
       <form
         autoComplete="off"
-        noValidate
+        //noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
@@ -71,6 +71,7 @@ const Form = ({ setCurrentId, currentId }) => {
           name="title"
           variant="outlined"
           label="Title"
+          required
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
@@ -79,6 +80,7 @@ const Form = ({ setCurrentId, currentId }) => {
           name="message"
           variant="outlined"
           label="Message"
+         
           fullWidth
           multiline
           rows={4}
@@ -92,6 +94,7 @@ const Form = ({ setCurrentId, currentId }) => {
           variant="outlined"
           label="Tags (coma separated)"
           fullWidth
+          required
           value={postData.tags}
           onChange={(e) =>
             setPostData({ ...postData, tags: e.target.value.split(",") })
