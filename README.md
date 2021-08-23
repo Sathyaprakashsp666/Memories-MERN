@@ -1,15 +1,15 @@
 # Memories Creator
 
  
-### Run command git clone (repo link)
+### Run command git clone https://github.com/Sathyaprakashsp666/Memories-MERN.git
 
-### To start front-end
+### Run front-end
 
 #### cd client 
 #### npm install
 #### npm run start || yarn start
 
-### To start backend
+### Run backend
 
 #### cd server
 #### npm install 
