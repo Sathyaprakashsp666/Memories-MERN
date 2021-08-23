@@ -31,7 +31,7 @@ const Home = () => {
           container
           justifyContent="space-between"
           alignItems="stretch"
-          spacing={3}
+          spacing={2}
           className={classes.mainContainer}
         >
           {isLogin ? (
@@ -40,9 +40,11 @@ const Home = () => {
             </Grid>
           ) : (
             <Grid item xs={12} sm={4}>
-              <Typography variant="h6">
-                Please login to create your own memories like others's
-              </Typography>
+              <Paper>
+                <Typography variant="h6">
+                  Please login to create your own memories like others's
+                </Typography>
+              </Paper>
             </Grid>
           )}
           <Grid item xs={12} sm={7}>

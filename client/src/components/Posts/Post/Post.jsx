@@ -23,6 +23,7 @@ const Post = ({ post, setCurrentId, currentId }) => {
   const initUser = JSON.parse(localStorage.getItem("profile"));
   const [user, setUser] = useState(initUser);
   const isLogin = user?.token;
+  const creator = user?.result.name.charAt(0);
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -68,28 +69,28 @@ const Post = ({ post, setCurrentId, currentId }) => {
       </CardContent>
 
       {/* //user logged in then only like and delete button wioll be displayed */}
-      {isLogin && (
-        <CardActions className={classes.cardActions}>
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => {
-              dispatch(likePost(post._id));
-            }}
-          >
-            <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
-          </Button>
-          <Button
-            size="small"
-            color="primary"
-            onClick={() => {
-              dispatch(deletePost(post._id));
-            }}
-          >
-            <DeleteIcon fontSize="small" /> Delete
-          </Button>
-        </CardActions>
-      )}
+      <CardActions className={classes.cardActions}>
+        <Button
+          disabled={!isLogin ? true : false}
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(likePost(post._id));
+          }}
+        >
+          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}
+        </Button>
+        <Button
+          disabled={!isLogin ? true : false}
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(deletePost(post._id));
+          }}
+        >
+          <DeleteIcon fontSize="small" /> Delete
+        </Button>
+      </CardActions>
     </Card>
   );
 };

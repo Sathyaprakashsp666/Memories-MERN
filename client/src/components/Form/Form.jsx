@@ -5,8 +5,11 @@ import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { createPosts, updatePost } from "../../Redux/actions/posts";
 
+const user = JSON.parse(localStorage.getItem("profile"));
+const creator = user?.result.name;
+
 const init = {
-  creator: "",
+  creator: creator,
   title: "",
   message: "",
   tags: "",
@@ -22,7 +25,6 @@ const Form = ({ setCurrentId, currentId }) => {
     currentId ? state.posts.find((p) => p._id === currentId) : null
   );
 
-
   //clearing input fields
   const clear = () => {
     setCurrentId(null);
@@ -33,7 +35,6 @@ const Form = ({ setCurrentId, currentId }) => {
     if (post) setPostData(post);
   }, [post]);
 
-
   //form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ const Form = ({ setCurrentId, currentId }) => {
     } else {
       dispatch(createPosts(postData));
     }
-    clear()
+    clear();
   };
 
   return (
@@ -56,7 +57,7 @@ const Form = ({ setCurrentId, currentId }) => {
         <Typography variant="h6">
           {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
         </Typography>
-        <TextField
+        {/* <TextField
           name="creator"
           variant="outlined"
           label="Creator"
@@ -65,7 +66,7 @@ const Form = ({ setCurrentId, currentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
           }
-        />
+        /> */}
         <TextField
           name="title"
           variant="outlined"
