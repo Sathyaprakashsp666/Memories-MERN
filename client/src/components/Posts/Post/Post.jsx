@@ -23,7 +23,7 @@ const Post = ({ post, setCurrentId, currentId }) => {
   const initUser = JSON.parse(localStorage.getItem("profile"));
   const [user, setUser] = useState(initUser);
   const isLogin = user?.token;
-  const creator = user?.result.name.charAt(0);
+  //const creator = user?.result.name.charAt(0);
   return (
     <Card className={classes.card}>
       <CardMedia
