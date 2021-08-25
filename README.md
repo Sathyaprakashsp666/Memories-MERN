@@ -15,6 +15,11 @@
 #### npm install 
 #### npm run start
 
+##  Hosted platform
+
+-- Front End : https://memories-creator-app.netlify.app/
+-- Backend   : https://memories-creator-app.herokuapp.com/
+
 
 ## Snapshots 
 
