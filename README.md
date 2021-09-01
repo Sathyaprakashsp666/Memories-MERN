@@ -1,7 +1,7 @@
 # Memories Creator
 
  
-### Run command git clone https://github.com/Sathyaprakashsp666/Memories-MERN.git
+#### Run command git clone https://github.com/Sathyaprakashsp666/Memories-MERN.git
 
 ### Run front-end
 
