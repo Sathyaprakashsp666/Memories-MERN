@@ -1,0 +1,15 @@
+.searchCont {
+  width: 100%;
+  height: 40px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+.searchCont input {
+  width: 50%;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.248);
+  border-radius: 10px;
+  color: #fff;
+}

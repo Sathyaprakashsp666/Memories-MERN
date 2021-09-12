@@ -57,16 +57,6 @@ const Form = ({ setCurrentId, currentId }) => {
         <Typography variant="h6">
           {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
         </Typography>
-        {/* <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        /> */}
         <TextField
           name="title"
           variant="outlined"
@@ -79,8 +69,7 @@ const Form = ({ setCurrentId, currentId }) => {
         <TextField
           name="message"
           variant="outlined"
-          label="Message"
-         
+          label="Add your Message here !!"
           fullWidth
           multiline
           rows={4}
@@ -88,17 +77,19 @@ const Form = ({ setCurrentId, currentId }) => {
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
+          required
         />
         <TextField
           name="tags"
           variant="outlined"
-          label="Tags (coma separated)"
+          label="Enter Tags (coma separated)"
           fullWidth
           required
           value={postData.tags}
           onChange={(e) =>
             setPostData({ ...postData, tags: e.target.value.split(",") })
           }
+          required
         />
         <div className={classes.fileInput}>
           <FileBase
@@ -107,6 +98,7 @@ const Form = ({ setCurrentId, currentId }) => {
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
+            required
           />
         </div>
         <Button

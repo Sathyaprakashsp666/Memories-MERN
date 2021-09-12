@@ -2,6 +2,7 @@ import axios from "axios";
 
 const URL = "https://memories-creator-app.herokuapp.com/posts";
 
+
 //get all posts
 export const fetchPosts = () => axios.get(URL);
 
