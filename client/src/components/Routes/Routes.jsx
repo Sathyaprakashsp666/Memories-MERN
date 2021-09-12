@@ -4,11 +4,13 @@ import Home from "../Home";
 import Navbar from "../Navbar/Navbar";
 import { Route, Switch } from "react-router-dom";
 import Auth from "../Auth/Auth";
+import Search from "../Search";
 
 const Routes = () => {
   return (
     <Container maxWidth="lg">
       <Navbar />
+     
       <Switch>
         <Route exact path="/">
           <Home />

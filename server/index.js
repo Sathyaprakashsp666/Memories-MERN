@@ -14,12 +14,14 @@ dotenv.config();
 import postRoutes from "./routes/post.js";
 
 app.use("/posts", postRoutes);
+
+
 app.use("/", (req, res) => {
   res.send("You're successfully deployed backend");
 });
 
 //connecting mongodb cloud
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 7000;
 const CONNECTION_URL = process.env.CONNECTION_URL;
 
 mongoose

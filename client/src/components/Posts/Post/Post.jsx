@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardActions,
@@ -14,15 +14,22 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import { useDispatch } from "react-redux";
 import useStyles from "./styles";
 import { deletePost, likePost } from "../../../Redux/actions/posts";
+import { Link, useHistory, useLocation } from "react-router-dom";
 
 const Post = ({ post, setCurrentId, currentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   //checking user token is exist or not
   const initUser = JSON.parse(localStorage.getItem("profile"));
   const [user, setUser] = useState(initUser);
   const isLogin = user?.token;
+
+  useEffect(() => {
+    const token = user?.token;
+    setUser(initUser);
+  }, [location]);
   //const creator = user?.result.name.charAt(0);
   return (
     <Card className={classes.card}>

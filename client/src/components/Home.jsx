@@ -6,6 +6,7 @@ import useStyles from "./style.js";
 import { useDispatch } from "react-redux";
 import { getPosts } from "../Redux/actions/posts";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import Search from "./Search";
 // import { useSelector } from "react-redux";
 
 const Home = () => {
@@ -18,12 +19,18 @@ const Home = () => {
   //console.log(isLogin);
   const initUser = JSON.parse(localStorage.getItem("profile"));
   const [user, setUser] = useState(initUser);
+
+  const [search, setSearch] = useState("");
   const isLogin = user?.token;
   //console.log(isLogin)
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch, currentId, isLogin]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
   return (
     <>
       <Grow in>
@@ -48,7 +55,12 @@ const Home = () => {
             </Grid>
           )}
           <Grid item xs={12} sm={7}>
-            <Posts setCurrentId={setCurrentId} currentId={currentId} />
+            <Search handleSearch={handleSearch} value={search} />
+            <Posts
+              setCurrentId={setCurrentId}
+              currentId={currentId}
+              search={search}
+            />
           </Grid>
         </Grid>
       </Grow>
