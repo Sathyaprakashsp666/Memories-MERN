@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL = "https://memories-creator-app.herokuapp.com/posts";
+// const URL = "https://memories-creator-app.herokuapp.com/posts";
+const URL = "https://memories-app-kw34.onrender.com/posts";
 
 
 //get all posts
