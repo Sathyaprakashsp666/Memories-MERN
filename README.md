@@ -3,6 +3,8 @@
  
 #### Run command git clone https://github.com/Sathyaprakashsp666/Memories-MERN.git
 
+##### Backend server live: https://memories-app-kw34.onrender.com/
+
 ### Run front-end
 
 #### cd client 
